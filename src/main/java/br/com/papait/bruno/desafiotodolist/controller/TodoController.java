@@ -4,6 +4,7 @@ package br.com.papait.bruno.desafiotodolist.controller;
 import br.com.papait.bruno.desafiotodolist.entity.TodoEntity;
 import br.com.papait.bruno.desafiotodolist.service.TodoService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class TodoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<List<TodoEntity>> create(@RequestBody TodoEntity todo) {
+    public ResponseEntity<List<TodoEntity>> create(@RequestBody @Valid TodoEntity todo) {
         return ResponseEntity.ok(this.todoService.create(todo));
     }
 
