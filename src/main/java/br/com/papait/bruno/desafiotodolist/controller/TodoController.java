@@ -1,7 +1,7 @@
 package br.com.papait.bruno.desafiotodolist.controller;
 
 
-import br.com.papait.bruno.desafiotodolist.entity.Todo;
+import br.com.papait.bruno.desafiotodolist.entity.TodoEntity;
 import br.com.papait.bruno.desafiotodolist.service.TodoService;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
@@ -21,24 +21,24 @@ public class TodoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<List<Todo>> create(@RequestBody Todo todo) {
+    public ResponseEntity<List<TodoEntity>> create(@RequestBody TodoEntity todo) {
         return ResponseEntity.ok(this.todoService.create(todo));
     }
 
     @GetMapping
-    public ResponseEntity<List<Todo>> findAll() {
+    public ResponseEntity<List<TodoEntity>> findAll() {
         return ResponseEntity.ok(this.todoService.findAll());
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity<List<Todo>> update(@RequestBody Todo todo) {
+    public ResponseEntity<List<TodoEntity>> update(@RequestBody TodoEntity todo) {
         return ResponseEntity.ok(this.todoService.update(todo));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<List<Todo>> delete(@PathVariable Long id) {
+    public ResponseEntity<List<TodoEntity>> delete(@PathVariable Long id) {
         return ResponseEntity.ok(this.todoService.delete(id));
     }
 }

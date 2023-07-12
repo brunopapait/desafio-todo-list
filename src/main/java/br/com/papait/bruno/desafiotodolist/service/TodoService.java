@@ -1,6 +1,6 @@
 package br.com.papait.bruno.desafiotodolist.service;
 
-import br.com.papait.bruno.desafiotodolist.entity.Todo;
+import br.com.papait.bruno.desafiotodolist.entity.TodoEntity;
 import br.com.papait.bruno.desafiotodolist.repository.TodoRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -16,26 +16,26 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public List<Todo> create(Todo todo) {
+    public List<TodoEntity> create(TodoEntity todo) {
         this.todoRepository.save(todo);
 
         return this.findAll();
     }
 
-    public List<Todo> findAll() {
+    public List<TodoEntity> findAll() {
         var sort = Sort.by("priority").descending()
                 .and(Sort.by("name").ascending());
 
         return this.todoRepository.findAll(sort);
     }
 
-    public List<Todo> update(Todo todo) {
+    public List<TodoEntity> update(TodoEntity todo) {
         this.todoRepository.save(todo);
 
         return this.findAll();
     }
 
-    public List<Todo> delete(Long id) {
+    public List<TodoEntity> delete(Long id) {
         this.todoRepository.deleteById(id);
 
         return this.findAll();

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "todos")
-public class Todo {
+public class TodoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,7 +12,7 @@ public class Todo {
     private String name;
     private String description;
     private boolean done;
-    private boolean priority;
+    private int priority;
 
     public Long getId() {
         return id;
@@ -46,11 +46,11 @@ public class Todo {
         this.done = done;
     }
 
-    public boolean isPriority() {
+    public int getPriority() {
         return priority;
     }
 
-    public void setPriority(boolean priority) {
+    public void setPriority(int priority) {
         this.priority = priority;
     }
 }
