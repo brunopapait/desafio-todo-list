@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/todos")
@@ -33,7 +34,7 @@ public class TodoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<List<TodoEntity>> update(@RequestBody TodoEntity todo) {
+    public ResponseEntity<List<TodoEntity>> update(@RequestBody @Valid TodoEntity todo) {
         return ResponseEntity.ok(this.todoService.update(todo));
     }
 
